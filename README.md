@@ -4,6 +4,7 @@ A comprehensive training platform for Domino's Pizza employees to learn and prac
 
 ## Features
 
+- Crust Codes Training
 - Portion Codes Training
 - Ingredient Codes Reference
 - Prebuilt Pizza Recipes @TODO

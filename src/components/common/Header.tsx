@@ -15,7 +15,7 @@ const Logo = styled(Typography)`
   color: white;
   display: flex;
   align-items: center;
-  text-decoration: none !important;
+  text-decoration: none;
 `;
 
 const NavBar = styled(Box)`
@@ -42,7 +42,6 @@ const NavLink = styled(Button)<{ active?: string }>`
     color: #fff;
     box-shadow: none;
   }
-  border: none;
   text-decoration: none;
 `;
 
@@ -59,6 +58,7 @@ export const navLinks = [
   { label: "Home", path: "/" },
   { label: "Portion Codes", path: "/portion-codes" },
   { label: "Ingredient Codes", path: "/ingredient-codes" },
+  { label: "Crust Codes", path: "/crust-codes" },
 ];
 
 export const Header = () => {
