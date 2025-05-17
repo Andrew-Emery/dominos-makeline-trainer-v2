@@ -34,9 +34,9 @@ const NavLink = styled(Button)<{ active?: string }>`
   box-shadow: none;
   transition: background 0.2s, color 0.2s;
   background: ${({ active, theme }) =>
-    active === 'true' ? theme.palette.primary.main : '#fff'};
+    active === 'true' ? '#fff' : theme.palette.primary.main};
   color: ${({ active, theme }) =>
-    active === 'true' ? '#fff' : theme.palette.secondary.main};
+    active === 'true' ? theme.palette.primary.main : '#fff'};
   &:hover {
     background: ${({ theme }) => theme.palette.secondary.main};
     color: #fff;
@@ -55,9 +55,10 @@ const PizzaIcon = styled('img')`
   vertical-align: middle;
 `;
 
-const navLinks = [
+export const navLinks = [
   { label: "Home", path: "/" },
   { label: "Portion Codes", path: "/portion-codes" },
+  { label: "Ingredient Codes", path: "/ingredient-codes" },
 ];
 
 export const Header = () => {
