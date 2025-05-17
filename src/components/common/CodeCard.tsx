@@ -27,7 +27,8 @@ const CodeLabel = styled('span')<{ $long?: boolean }>`
   font-weight: bold;
   font-size: 1.25rem;
   ${({ $long }) =>
-    $long && css`
+    $long &&
+    css`
       @media (max-width: 600px) {
         font-size: 1rem;
       }
@@ -84,4 +85,4 @@ const CodeCard = ({ code, name, glutenContaining }: CodeCardProps) => {
   );
 };
 
-export default CodeCard; 
+export default CodeCard;

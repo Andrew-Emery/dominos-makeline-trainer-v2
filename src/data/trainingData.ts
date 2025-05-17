@@ -10,7 +10,7 @@ export interface PortionItem {
 }
 
 // Define a type for valid ingredient codes
-export type IngredientCode = typeof trainingData['ingredient-codes'][number]['code'];
+export type IngredientCode = (typeof trainingData)['ingredient-codes'][number]['code'];
 
 export interface PreBuiltItem {
   name: string;
@@ -29,7 +29,7 @@ export interface TrainingData {
 
 // Helper function to convert ingredient codes to readable names
 export const getIngredientName = (code: IngredientCode): string => {
-  const ingredient = trainingData['ingredient-codes'].find(item => item.code === code);
+  const ingredient = trainingData['ingredient-codes'].find((item) => item.code === code);
   return ingredient?.name || code;
 };
 
@@ -54,7 +54,7 @@ export const trainingData: TrainingData = {
     { code: 'G3', name: 'Gluten Free Crust (Small)' },
   ],
   'portion-codes': [
-    { code: '-', name: 'Minus Topping (Don\'t put the topping on the pizza)'},
+    { code: '-', name: "Minus Topping (Don't put the topping on the pizza)" },
     { code: '~', name: 'Less Topping (Put less of the topping on the pizza)' },
     { code: '+', name: 'Extra Topping (Put a little bit more of the topping on the pizza)' },
     { code: '2', name: 'Double Topping (Put double of the topping on the pizza)' },
@@ -90,7 +90,7 @@ export const trainingData: TrainingData = {
     { code: 'V', name: 'Black Olives' },
     { code: 'T', name: 'Tuna' },
     { code: '*', name: 'Herbs' },
-    { code: 'Xs', name: 'Pizza Sauce Drizzle' },   
+    { code: 'Xs', name: 'Pizza Sauce Drizzle' },
   ],
   'meat-portions': [
     { pizza: 'Personal 7 Inch', slices: 4 },
@@ -101,44 +101,44 @@ export const trainingData: TrainingData = {
   'pre-built': [
     // BBQ Bases
     {
-        name: 'Texas BBQ',
-        code: 'BQ',
-        toppings: ['Qs', 'K', 'W', 'O', 'G'],
+      name: 'Texas BBQ',
+      code: 'BQ',
+      toppings: ['Qs', 'K', 'W', 'O', 'G'],
     },
     {
-        name: 'Meteor',
-        code: 'MT',
-        toppings: ['Qs', 'P', 'S', 'Mb', 'K', 'B'],
+      name: 'Meteor',
+      code: 'MT',
+      toppings: ['Qs', 'P', 'S', 'Mb', 'K', 'B'],
     },
     {
-        name: 'Ranch BBQ',
-        code: 'RQ',
-        toppings: ['Qs', 'P', 'K', 'B', 'W',],
-        notes: 'Two pepperoni per slice, one on personal',
+      name: 'Ranch BBQ',
+      code: 'RQ',
+      toppings: ['Qs', 'P', 'K', 'B', 'W'],
+      notes: 'Two pepperoni per slice, one on personal',
     },
     // Tomato Bases
     {
-        name: 'Cheese & Tomato',
-        code: 'MA',
-        toppings: ['+C']
+      name: 'Cheese & Tomato',
+      code: 'MA',
+      toppings: ['+C'],
     },
     {
-        name: 'Pepperoni Passion',
-        code: 'PP',
-        toppings: ['2C', '2P'],
-        notes: 'Four pepperoni per slice, three on personal'
+      name: 'Pepperoni Passion',
+      code: 'PP',
+      toppings: ['2C', '2P'],
+      notes: 'Four pepperoni per slice, three on personal',
     },
     {
-        name: 'American Hot',
-        code: 'AH',
-        toppings: ['P', 'O', 'J'],
-        notes: 'Three pepperoni per slice, two on personal'
+      name: 'American Hot',
+      code: 'AH',
+      toppings: ['P', 'O', 'J'],
+      notes: 'Three pepperoni per slice, two on personal',
     },
     {
-        name: 'Mighty Meaty',
-        code: 'MM',
-        toppings: ['P', 'H', 'S', 'B', 'O', 'M'],
-        notes: 'Two pepperoni, two ham per slice, one of each on personal'
+      name: 'Mighty Meaty',
+      code: 'MM',
+      toppings: ['P', 'H', 'S', 'B', 'O', 'M'],
+      notes: 'Two pepperoni, two ham per slice, one of each on personal',
     },
   ],
-}; 
+};

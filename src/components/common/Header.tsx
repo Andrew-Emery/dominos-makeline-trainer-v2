@@ -1,12 +1,27 @@
-import { AppBar, Toolbar, Typography, IconButton, useTheme, useMediaQuery, Box, Button, Drawer, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import styled from 'styled-components';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  IconButton,
+  useTheme,
+  useMediaQuery,
+  Box,
+  Button,
+  Drawer,
+  List,
+  ListItem,
+} from '@mui/material';
 import { useState } from 'react';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
+import styled from 'styled-components';
+
 import pizzaIcon from '../../assets/pizza.svg';
 
+import { navLinks } from './navLinks';
+
 const StyledAppBar = styled(AppBar)`
-  background-color: ${props => props.theme.palette.primary.main};
+  background-color: ${(props) => props.theme.palette.primary.main};
 `;
 
 const Logo = styled(Typography)`
@@ -28,15 +43,15 @@ const NavLink = styled(Button)<{ active?: string }>`
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: 1rem;
+  font-size: 0.6rem;
   border-radius: 6px;
   padding: 0.5rem 1.25rem;
   box-shadow: none;
-  transition: background 0.2s, color 0.2s;
-  background: ${({ active, theme }) =>
-    active === 'true' ? '#fff' : theme.palette.primary.main};
-  color: ${({ active, theme }) =>
-    active === 'true' ? theme.palette.primary.main : '#fff'};
+  transition:
+    background 0.2s,
+    color 0.2s;
+  background: ${({ active, theme }) => (active === 'true' ? '#fff' : theme.palette.primary.main)};
+  color: ${({ active, theme }) => (active === 'true' ? theme.palette.primary.main : '#fff')};
   &:hover {
     background: ${({ theme }) => theme.palette.secondary.main};
     color: #fff;
@@ -54,12 +69,11 @@ const PizzaIcon = styled('img')`
   vertical-align: middle;
 `;
 
-export const navLinks = [
-  { label: "Home", path: "/" },
-  { label: "Portion Codes", path: "/portion-codes" },
-  { label: "Ingredient Codes", path: "/ingredient-codes" },
-  { label: "Crust Codes", path: "/crust-codes" },
-];
+const MobileNavBox = styled(Box)`
+  width: 220px;
+  background-color: ${({ theme }) => theme.palette.primary.main};
+  height: 100vh;
+`;
 
 export const Header = () => {
   const theme = useTheme();
@@ -89,35 +103,38 @@ export const Header = () => {
         </Logo>
         {!isMobile && (
           <NavBar>
-            {navLinks.filter((link) => link.label !== "Home").map(link => (
-              <NavLink
-                key={link.path}
-                as={RouterLink}
-                to={link.path}
-                active={(location.pathname === link.path).toString()}
-              >
-                {link.label}
-              </NavLink>
-            ))}
+            {navLinks
+              .filter((link) => link.label !== 'Home')
+              .map((link) => (
+                <NavLink
+                  key={link.path}
+                  as={RouterLink}
+                  to={link.path}
+                  active={(location.pathname === link.path).toString()}
+                >
+                  {link.label}
+                </NavLink>
+              ))}
           </NavBar>
         )}
         {isMobile && (
-          <Drawer
-            anchor="left"
-            open={drawerOpen}
-            onClose={handleDrawerToggle}
-          >
-            <Box sx={{ width: 220 }} role="presentation" onClick={handleDrawerToggle}>
+          <Drawer anchor="left" open={drawerOpen} onClose={handleDrawerToggle}>
+            <MobileNavBox role="presentation" onClick={handleDrawerToggle}>
               <List>
-                {navLinks.map(link => (
-                  <ListItem key={link.path} disablePadding>
-                    <ListItemButton component={RouterLink} to={link.path} selected={location.pathname === link.path}>
-                      <ListItemText primary={link.label} />
-                    </ListItemButton>
+                {navLinks.map((link) => (
+                  <ListItem key={link.path}>
+                    <NavLink
+                      key={link.path}
+                      as={RouterLink}
+                      to={link.path}
+                      active={(location.pathname === link.path).toString()}
+                    >
+                      {link.label}
+                    </NavLink>
                   </ListItem>
                 ))}
               </List>
-            </Box>
+            </MobileNavBox>
           </Drawer>
         )}
       </Toolbar>

@@ -1,4 +1,5 @@
 import { Container, Typography, Box } from '@mui/material';
+
 import CodeCard from '../components/common/CodeCard';
 import { trainingData } from '../data/trainingData';
 
@@ -10,7 +11,8 @@ const CrustCodesPage = () => {
           Crust Codes
         </Typography>
         <Typography variant="body1">
-          Reference for all Domino's makeline crust codes. Gluten content is indicated where relevant.
+          Reference for all Domino's makeline crust codes. Gluten content is indicated where
+          relevant.
         </Typography>
       </Box>
       {trainingData['crust-codes'].map((item) => (
@@ -25,4 +27,4 @@ const CrustCodesPage = () => {
   );
 };
 
-export default CrustCodesPage; 
+export default CrustCodesPage;

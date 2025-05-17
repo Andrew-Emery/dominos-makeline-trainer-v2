@@ -1,7 +1,8 @@
 import { Container, Typography, Box, Grid, Card, CardContent } from '@mui/material';
-import styled from 'styled-components';
 import { Link as RouterLink } from 'react-router-dom';
-import { navLinks } from '../components/common/Header';
+import styled from 'styled-components';
+
+import { navLinks } from '../components/common/navLinks';
 
 const CardLink = styled(RouterLink)`
   text-decoration: none;
@@ -14,11 +15,11 @@ const StyledCard = styled(Card)`
   text-decoration: none;
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
   }
 `;
 
-const cardData = navLinks.filter(link => link.label !== 'Home');
+const cardData = navLinks.filter((link) => link.label !== 'Home');
 
 const HomePage = () => {
   return (
@@ -31,14 +32,17 @@ const HomePage = () => {
           Learn. Practice. Excel.
         </Typography>
         <Typography variant="body1" sx={{ maxWidth: '800px', mx: 'auto' }}>
-          Master the art of pizza making with our comprehensive training platform.
-          Learn portion codes, ingredient codes, and perfect your pizza assembly skills.
+          Master the art of pizza making with our comprehensive training platform. Learn portion
+          codes, ingredient codes, and perfect your pizza assembly skills.
         </Typography>
       </Box>
 
       <Grid container columns={12} spacing={3}>
         {cardData.map((card, idx) => (
-          <Grid key={card?.label || idx} sx={{ width: { xs: '100%', sm: '50%', md: '25%' }, flexGrow: 1 }}>
+          <Grid
+            key={card?.label || idx}
+            sx={{ width: { xs: '100%', sm: '50%', md: '25%' }, flexGrow: 1 }}
+          >
             <CardLink to={card?.path || '#'}>
               <StyledCard>
                 <CardContent>
@@ -46,10 +50,14 @@ const HomePage = () => {
                     {card?.label}
                   </Typography>
                   <Typography variant="body1">
-                    {card?.label === 'Portion Codes' && 'Learn the simple four portion codes for perfect pizza portioning.'}
-                    {card?.label === 'Ingredient Codes' && 'Master the ingredient codes for efficient pizza assembly.'}
-                    {card?.label === 'Crust Codes' && 'See all Domino\'s crust codes and which are gluten free.'}
-                    {card?.label === 'Prebuilt Pizzas' && 'Study the standard recipes for our most popular pizzas.'}
+                    {card?.label === 'Portion Codes' &&
+                      'Learn the simple four portion codes for perfect pizza portioning.'}
+                    {card?.label === 'Ingredient Codes' &&
+                      'Master the ingredient codes for efficient pizza assembly.'}
+                    {card?.label === 'Crust Codes' &&
+                      "See all Domino's crust codes and which are gluten free."}
+                    {card?.label === 'Prebuilt Pizzas' &&
+                      'Study the standard recipes for our most popular pizzas.'}
                   </Typography>
                 </CardContent>
               </StyledCard>
@@ -61,4 +69,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage; 
+export default HomePage;
