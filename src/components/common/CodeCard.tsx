@@ -28,19 +28,33 @@ const CodeLabel = styled('span')`
   font-size: 1.25rem;
 `;
 
-const NameLabel = styled('span')`
-  flex: 0 0 80%;
-  max-width: 80%;
+const NameLabel = styled('span')<{ $gluten?: boolean }>`
+  flex: ${({ $gluten }) => ($gluten ? '0 0 60%' : '0 0 80%')};
+  max-width: ${({ $gluten }) => ($gluten ? '60%' : '80%')};
   font-size: 1.1rem;
   font-weight: normal;
   color: inherit;
 `;
 
-const GlutenIndicator = styled(Box)`
-  margin-top: 8px;
-  color: ${({ theme }) => theme.palette.primary.main};
-  font-size: 0.95rem;
-  font-weight: 600;
+const GlutenBadgeWrapper = styled(Box)`
+  flex: 0 0 20%;
+  max-width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+`;
+
+const GlutenBadge = styled('span')`
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  background: ${({ theme }) => theme.palette.primary.main};
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  vertical-align: middle;
 `;
 
 const CodeCard = ({ code, name, glutenContaining }: CodeCardProps) => (
@@ -50,13 +64,13 @@ const CodeCard = ({ code, name, glutenContaining }: CodeCardProps) => (
         <CodeLabelWrapper>
           <CodeLabel>{code}</CodeLabel>
         </CodeLabelWrapper>
-        <NameLabel>{name}</NameLabel>
+        <NameLabel $gluten={!!glutenContaining}>{name}</NameLabel>
+        {glutenContaining && (
+          <GlutenBadgeWrapper>
+            <GlutenBadge>Contains Gluten</GlutenBadge>
+          </GlutenBadgeWrapper>
+        )}
       </Row>
-      {glutenContaining !== undefined && (
-        <GlutenIndicator>
-          {glutenContaining ? 'Contains Gluten' : 'Gluten Free'}
-        </GlutenIndicator>
-      )}
     </CardContent>
   </Card>
 );
