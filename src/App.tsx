@@ -7,6 +7,7 @@ import { Footer } from './components/common/Footer';
 import HomePage from './pages/HomePage';
 import PortionCodesPage from './pages/PortionCodesPage';
 import IngredientCodesPage from './pages/IngredientCodesPage';
+import CrustCodesPage from './pages/CrustCodesPage';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -33,6 +34,7 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/portion-codes" element={<PortionCodesPage />} />
                 <Route path="/ingredient-codes" element={<IngredientCodesPage />} />
+                <Route path="/crust-codes" element={<CrustCodesPage />} />
               </Routes>
             </MainContent>
             <Footer />

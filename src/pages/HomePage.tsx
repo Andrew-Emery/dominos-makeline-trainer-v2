@@ -18,11 +18,7 @@ const StyledCard = styled(Card)`
   }
 `;
 
-const cardData = [
-  navLinks.find(link => link.label === 'Portion Codes'),
-  navLinks.find(link => link.label === 'Ingredient Codes'),
-  { label: 'Prebuilt Pizzas', path: '#' },
-];
+const cardData = navLinks.filter(link => link.label !== 'Home');
 
 const HomePage = () => {
   return (
@@ -42,7 +38,7 @@ const HomePage = () => {
 
       <Grid container columns={12} spacing={3}>
         {cardData.map((card, idx) => (
-          <Grid key={card?.label || idx} sx={{ width: { xs: '100%', sm: '50%', md: '33.33%' }, flexGrow: 1 }}>
+          <Grid key={card?.label || idx} sx={{ width: { xs: '100%', sm: '50%', md: '25%' }, flexGrow: 1 }}>
             <CardLink to={card?.path || '#'}>
               <StyledCard>
                 <CardContent>
@@ -52,6 +48,7 @@ const HomePage = () => {
                   <Typography variant="body1">
                     {card?.label === 'Portion Codes' && 'Learn the simple four portion codes for perfect pizza portioning.'}
                     {card?.label === 'Ingredient Codes' && 'Master the ingredient codes for efficient pizza assembly.'}
+                    {card?.label === 'Crust Codes' && 'See all Domino\'s crust codes and which are gluten free.'}
                     {card?.label === 'Prebuilt Pizzas' && 'Study the standard recipes for our most popular pizzas.'}
                   </Typography>
                 </CardContent>

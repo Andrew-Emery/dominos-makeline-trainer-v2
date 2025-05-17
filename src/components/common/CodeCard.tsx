@@ -1,5 +1,5 @@
 import { Card, CardContent, Box } from '@mui/material';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface CodeCardProps {
   code: string;
@@ -22,10 +22,16 @@ const CodeLabelWrapper = styled(Box)`
   height: 100%;
 `;
 
-const CodeLabel = styled('span')`
+const CodeLabel = styled('span')<{ $long?: boolean }>`
   color: ${({ theme }) => theme.palette.primary.main};
   font-weight: bold;
   font-size: 1.25rem;
+  ${({ $long }) =>
+    $long && css`
+      @media (max-width: 600px) {
+        font-size: 1rem;
+      }
+    `}
 `;
 
 const NameLabel = styled('span')<{ $gluten?: boolean }>`
@@ -57,22 +63,25 @@ const GlutenBadge = styled('span')`
   vertical-align: middle;
 `;
 
-const CodeCard = ({ code, name, glutenContaining }: CodeCardProps) => (
-  <Card sx={{ mb: 2 }}>
-    <CardContent>
-      <Row>
-        <CodeLabelWrapper>
-          <CodeLabel>{code}</CodeLabel>
-        </CodeLabelWrapper>
-        <NameLabel $gluten={!!glutenContaining}>{name}</NameLabel>
-        {glutenContaining && (
-          <GlutenBadgeWrapper>
-            <GlutenBadge>Contains Gluten</GlutenBadge>
-          </GlutenBadgeWrapper>
-        )}
-      </Row>
-    </CardContent>
-  </Card>
-);
+const CodeCard = ({ code, name, glutenContaining }: CodeCardProps) => {
+  const isLongCode = code.length > 3;
+  return (
+    <Card sx={{ mb: 2 }}>
+      <CardContent>
+        <Row>
+          <CodeLabelWrapper>
+            <CodeLabel $long={isLongCode}>{code}</CodeLabel>
+          </CodeLabelWrapper>
+          <NameLabel $gluten={!!glutenContaining}>{name}</NameLabel>
+          {glutenContaining && (
+            <GlutenBadgeWrapper>
+              <GlutenBadge>Contains Gluten</GlutenBadge>
+            </GlutenBadgeWrapper>
+          )}
+        </Row>
+      </CardContent>
+    </Card>
+  );
+};
 
 export default CodeCard; 
