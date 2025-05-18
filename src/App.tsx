@@ -4,12 +4,14 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import styled from 'styled-components';
 
+import BackToTopButton from './components/BackToTopButton';
 import { Footer } from './components/common/Footer';
 import { Header } from './components/common/Header';
 import CrustCodesPage from './pages/CrustCodesPage';
 import HomePage from './pages/HomePage';
 import IngredientCodesPage from './pages/IngredientCodesPage';
 import PortionCodesPage from './pages/PortionCodesPage';
+import PrebuiltPizzasPage from './pages/PrebuiltPizzasPage';
 import { theme } from './theme/theme';
 
 const AppContainer = styled(Box)`
@@ -36,7 +38,9 @@ function App() {
                 <Route path="/portion-codes" element={<PortionCodesPage />} />
                 <Route path="/ingredient-codes" element={<IngredientCodesPage />} />
                 <Route path="/crust-codes" element={<CrustCodesPage />} />
+                <Route path="/prebuilt-pizzas" element={<PrebuiltPizzasPage />} />
               </Routes>
+              <BackToTopButton />
             </MainContent>
             <Footer />
           </AppContainer>

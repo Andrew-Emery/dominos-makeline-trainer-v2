@@ -140,5 +140,93 @@ export const trainingData: TrainingData = {
       toppings: ['P', 'H', 'S', 'B', 'O', 'M'],
       notes: 'Two pepperoni, two ham per slice, one of each on personal',
     },
+    {
+      name: 'New Yorker',
+      code: 'NY',
+      toppings: ['P', 'H', 'K', 'M'],
+      notes: 'Two pepperoni, two ham per slice, one of each on personal',
+    },
+    {
+      name: 'Meatfielder',
+      code: 'MD',
+      toppings: ['P', 'H', 'Mb', 'R', 'K'],
+      notes:
+        'One pepperoni, one ham, one meatball, one bacon, two chorizo per slice,one of each on personal',
+    },
+    {
+      name: 'Absolute Banger',
+      code: 'AB',
+      toppings: ['P', 'S', 'R', 'Hd'],
+      notes:
+        'One pepperoni, one sausage, one chorizo and four hotdogs per slice, two hotdogs on personal',
+    },
+    {
+      name: 'Ham & Pineapple',
+      code: 'HI',
+      toppings: ['H', 'I'],
+      notes: 'Three ham per slice, two on personal',
+    },
+    {
+      name: 'Meatball Marinara',
+      code: 'MB',
+      toppings: ['2Mb', 'O', 'Xs', '*'],
+      notes: 'Three meatballs per slice, two on personal',
+    },
+    {
+      name: 'Cheeseburger',
+      code: 'BU',
+      toppings: ['2B', 'O', 'Gk', 'F'],
+      notes: 'Burger sauce, post bake',
+    },
+    {
+      name: 'Chicken Feast',
+      code: 'CF',
+      toppings: ['W', 'M', 'N'],
+    },
+    {
+      name: 'Tandoori Hot',
+      code: 'TH',
+      toppings: ['D', 'O', 'G', 'M', 'J'],
+    },
+    {
+      name: 'Hot & Spicy',
+      code: 'HS',
+      toppings: ['B', 'O', 'G', 'J'],
+    },
+    {
+      name: 'Tuna Supreme',
+      code: 'TD',
+      toppings: ['T', 'O', 'N'],
+    },
+    {
+      name: 'Vegi Supreme',
+      code: 'VS',
+      toppings: ['O', 'G', 'M', 'N', 'F'],
+    },
+    {
+      name: 'Vegi Volcano',
+      code: 'VV',
+      toppings: ['2C', 'O', 'G', 'J', 'F'],
+    },
+    {
+      name: 'Vegan Vegi Supreme',
+      code: 'VVS',
+      toppings: ['Ca', 'O', 'G', 'M', 'N', 'F'],
+    },
+    {
+      name: 'Vegan Pepperonay',
+      code: 'VPN',
+      toppings: ['Ca', 'Vp'],
+    },
+    {
+      name: 'Vegan Margherita',
+      code: 'VMA',
+      toppings: ['Ca', 'F', '*'],
+    },
+    {
+      name: 'Vegan American Hot',
+      code: 'VAH',
+      toppings: ['Ca', 'Vp', 'O', 'J'],
+    },
   ],
 };
