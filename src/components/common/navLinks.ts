@@ -3,4 +3,5 @@ export const navLinks = [
   { label: 'Crust Codes', path: '/crust-codes' },
   { label: 'Ingredient Codes', path: '/ingredient-codes' },
   { label: 'Portion Codes', path: '/portion-codes' },
+  { label: 'Prebuilt Pizzas', path: '/prebuilt-pizzas' },
 ];
