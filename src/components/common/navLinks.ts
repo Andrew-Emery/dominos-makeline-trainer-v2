@@ -4,4 +4,5 @@ export const navLinks = [
   { label: 'Ingredient Codes', path: '/ingredient-codes' },
   { label: 'Portion Codes', path: '/portion-codes' },
   { label: 'Prebuilt Pizzas', path: '/prebuilt-pizzas' },
+  { label: 'Test Yourself', path: '/test' },
 ];

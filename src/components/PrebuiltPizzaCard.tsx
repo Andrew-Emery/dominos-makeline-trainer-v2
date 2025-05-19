@@ -1,7 +1,8 @@
 import { Card, CardContent, Typography, Box } from '@mui/material';
 import styled from 'styled-components';
 
-import { getIngredientName, type PreBuiltItem } from '../data/trainingData';
+import { getIngredientName, parseTopping, type PreBuiltItem } from '../data/trainingData';
+import { trainingData } from '../data/trainingData';
 
 const ToppingPill = styled('span')`
   display: inline-block;
@@ -28,6 +29,14 @@ const Note = styled(Typography)`
   margin-top: 0.5em;
 `;
 
+const getPortionLabel = (portion: string | undefined) => {
+  if (!portion) return '';
+  const portionObj = trainingData['portion-codes'].find((p) => p.code === portion);
+  if (!portionObj) return '';
+  // Use the first word of the portion name for brevity (e.g. 'Extra', 'Double', 'Less', 'Minus')
+  return portionObj.name.split(' ')[0];
+};
+
 const PrebuiltPizzaCard = ({ pizza }: { pizza: PreBuiltItem }) => (
   <Card sx={{ mb: 3 }}>
     <CardContent>
@@ -38,13 +47,15 @@ const PrebuiltPizzaCard = ({ pizza }: { pizza: PreBuiltItem }) => (
         Code: {pizza.code}
       </Typography>
       <ToppingsRow>
-        {pizza.toppings.map((code) => {
-          const name = getIngredientName(code.replace(/^[-~+2]/, ''));
-          const portion = code.match(/^[-~+2]/) ? code[0] + ': ' : '';
+        {pizza.toppings.map((topping) => {
+          const { portion, code } = parseTopping(topping);
+          const name = getIngredientName(code);
+          const portionLabel = getPortionLabel(portion);
+          const displayName = portion ? `${portionLabel} ${name}`.trim() : name;
           return (
-            <ToppingPill key={code}>
-              {portion}
-              {name}
+            <ToppingPill key={topping}>
+              {portion ? portion : ''}
+              {code}: {displayName}
             </ToppingPill>
           );
         })}

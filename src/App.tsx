@@ -12,6 +12,7 @@ import HomePage from './pages/HomePage';
 import IngredientCodesPage from './pages/IngredientCodesPage';
 import PortionCodesPage from './pages/PortionCodesPage';
 import PrebuiltPizzasPage from './pages/PrebuiltPizzasPage';
+import TestPage from './pages/TestPage';
 import { theme } from './theme/theme';
 
 const AppContainer = styled(Box)`
@@ -39,6 +40,7 @@ function App() {
                 <Route path="/ingredient-codes" element={<IngredientCodesPage />} />
                 <Route path="/crust-codes" element={<CrustCodesPage />} />
                 <Route path="/prebuilt-pizzas" element={<PrebuiltPizzasPage />} />
+                <Route path="/test" element={<TestPage />} />
               </Routes>
               <BackToTopButton />
             </MainContent>
